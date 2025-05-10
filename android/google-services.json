@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "255222934814",
+    "project_id": "eduwise-ccf6b",
+    "storage_bucket": "eduwise-ccf6b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255222934814:android:4e040f0c810f47b8daed0f",
+        "android_client_info": {
+          "package_name": "com.example.eduwise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4XdSw2DLIHjxIRj9s7n5GCBzCSHzCNsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

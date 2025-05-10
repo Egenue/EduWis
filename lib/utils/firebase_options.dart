@@ -20,21 +20,21 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'your-web-api-key',
-    appId: 'your-web-app-id',
+    apiKey: 'AIzaSyAfE9kx1-VPdl9KeZBGGRQB99F1OyAhoIE',
+    appId: '1:255222934814:web:69fe505a4aac4df3daed0f',
     messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    authDomain: 'your-auth-domain',
-    storageBucket: 'your-storage-bucket',
-    measurementId: 'your-measurement-id',
+    projectId: 'eduwise-ccf6b',
+    authDomain: 'eduwise-ccf6b.firebaseapp.com',
+    storageBucket: 'eduwise-ccf6b.firebasestorage.app',
+    measurementId: 'G-LB9Q4ME9G8',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'your-android-api-key',
-    appId: 'your-android-app-id',
-    messagingSenderId: 'your-sender-id',
-    projectId: 'your-project-id',
-    storageBucket: 'your-storage-bucket',
+    apiKey: 'AIzaSyB4XdSw2DLIHjxIRj9s7n5GCBzCSHzCNsE',
+    appId: '1:255222934814:android:4e040f0c810f47b8daed0f',
+    messagingSenderId: '255222934814',
+    projectId: 'eduwise-ccf6b',
+    storageBucket: 'eduwise-ccf6b.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
