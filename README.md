@@ -1,0 +1,3 @@
+# EduWise
+
+EduWise is an AI-powered mobile learning app built with Flutter and Firebase...
