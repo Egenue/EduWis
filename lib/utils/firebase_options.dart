@@ -22,7 +22,7 @@ class DefaultFirebaseOptions {
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyAfE9kx1-VPdl9KeZBGGRQB99F1OyAhoIE',
     appId: '1:255222934814:web:69fe505a4aac4df3daed0f',
-    messagingSenderId: 'your-sender-id',
+    messagingSenderId: '255222934814',
     projectId: 'eduwise-ccf6b',
     authDomain: 'eduwise-ccf6b.firebaseapp.com',
     storageBucket: 'eduwise-ccf6b.firebasestorage.app',
