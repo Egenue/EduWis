@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class QuizQuestion {
   final String question;
@@ -50,7 +51,14 @@ class _QuizScreenState extends State<QuizScreen> {
       final snapshot = await FirebaseFirestore.instance
           .collection('quizzes')
           .limit(1)
-          .get();
+          .get()
+          .timeout(
+            const Duration(seconds: 10),
+            onTimeout: () => throw FirebaseException(
+              plugin: 'firestore',
+              message: 'Connection timeout',
+            ),
+          );
 
       if (snapshot.docs.isEmpty) {
         setState(() {
@@ -62,14 +70,17 @@ class _QuizScreenState extends State<QuizScreen> {
 
       final questionsList = List.from(snapshot.docs.first['questions'] ?? []);
       setState(() {
-        questions = questionsList
-            .map((q) => QuizQuestion.fromMap(q))
-            .toList();
+        questions = questionsList.map((q) => QuizQuestion.fromMap(q)).toList();
+        isLoading = false;
+      });
+    } on FirebaseException catch (e) {
+      setState(() {
+        error = 'Firebase error: ${e.message}';
         isLoading = false;
       });
     } catch (e) {
       setState(() {
-        error = 'Failed to load quiz: $e';
+        error = 'Error loading quiz: ${e.toString()}';
         isLoading = false;
       });
     }
@@ -118,7 +129,8 @@ class _QuizScreenState extends State<QuizScreen> {
     }
 
     if (error != null) {
-      return Center(child: Text(error!, style: const TextStyle(color: Colors.red)));
+      return Center(
+          child: Text(error!, style: const TextStyle(color: Colors.red)));
     }
 
     if (questions.isEmpty) {
@@ -140,15 +152,15 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         const SizedBox(height: 20),
         ...question.options.asMap().entries.map((entry) => Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: ElevatedButton(
-            onPressed: () => answerQuestion(entry.key),
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-            ),
-            child: Text(entry.value),
-          ),
-        )).toList(),
+              padding: const EdgeInsets.only(bottom: 10),
+              child: ElevatedButton(
+                onPressed: () => answerQuestion(entry.key),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                child: Text(entry.value),
+              ),
+            )),
       ],
     );
   }
